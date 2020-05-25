@@ -8,8 +8,8 @@ With metadata such as keywords and title, it can be easily done.
 But, in case where the documents lack the meta data, it raises
 an issue: IT TAKES DAMN LONG.
 
-KeyGen, however, can fix this issue by _populating keyword vector
-for each document._ By running population and user UI in a parallel,
+KeyGen, however, can fix this issue by populating keyword vector
+for each document. By running population and user UI in a parallel,
 KeyGen need not to worry about a sad user experience. 
 
 ## Installation
@@ -28,20 +28,42 @@ make input          # if you want to continue adding input
 make restart        # delete previous pickle files and start again
 ```
 
+## Example
+Run the script from terminal
+```bash
+$ make
+python pickling_posts.py
+python key_generator.py
+ENTER KEYWORD ('quit' to end): django
+ENTER KEYWORD ('quit' to end): python
+ENTER KEYWORD ('quit' to end): quit
+SUCCESSFULLY EXITING THE PROGRAM
+```
+
+Then check 'render.txt'
+```text
+YOU HAVE SEARCHED "python"
+THERE ARE 2 POSTS
+.
+.
+.
+```
+_Posts should be ordered from the most relevant to least relevant._
+
 ## Little Math Behind the Scene
 I questioned myself while I make KeyGen. What is a decision factor
 of keywords?<br>
 My quick answer to this was, WHY DO WE BOTHER?
 
 People already know the keyword so let them type them.
-So my better question after this was,<br>
+So my better question after this was this.<br>
 If there is a keyword match for this document and that document,
-_which one comes first?_
+which comes first?
 
 Solely on frequency of the keyword in the document couldn't be
 accurate because this meant longer the document, it is more likely
 to be more related document for more keywords. Which is not true.
-So, I decided to _normalize the keyword vector_ and then call the
+So, I decided to normalize the keyword vector and then call the
 document that has highest value to the matching keyword to be
 the most related document. Next document next most related and so on.
 

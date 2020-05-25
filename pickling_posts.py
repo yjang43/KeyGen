@@ -1,5 +1,5 @@
-"""This script collects all documents under \"posts/\" directory.  Then it constructs pickle object and
-save that as \"data_container.pickle\" file.
+"""This script collects all documents under 'posts/' directory.  Then it constructs pickle object and
+save that as 'data_container.pickle' file.
 """
 
 import pickle
